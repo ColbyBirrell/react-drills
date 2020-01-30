@@ -1,26 +1,70 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import NewTask from "./components/NewTask";
+import List from "./components/List";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      list: []
+    };
+
+  }
+
+  handleAddTask = (task) => {
+    this.setState({ list: [...this.state.list, task] });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>My todoist listist:</h1>
+        <NewTask add={this.handleAddTask} />
+        <List tasks={this.state.list} />
+      </div>
+    );
+  }
 }
 
 export default App;
+
+
+
+
+
+// import React, { Component } from 'react';
+// import './App.css';
+// // import Todo from './components/Todo'
+// import NewTask from './components/NewTask'
+// import List from './components/List'
+
+// class App extends Component {
+//   constructor(props) {
+//     super(props)
+
+//     this.state = {
+
+//       listArray: []
+//     }
+//   }
+
+//   handleChangeClick = (val) => {
+//     this.setState({ listArray: [...this.state.listArray, val] })
+//   }
+
+//   render() {
+//     return (
+//       <div className="App">
+//         <h1>To Do Listerer</h1>
+//         <NewTask click={this.handleChangeClick} />
+//         <List listItems={this.state.listArray} />
+//       </div>
+//     );
+//   }
+
+// }
+
+// export default App;
+
